@@ -128,3 +128,5 @@ Here is a table showcasing a couple of issues and how they were solved:
 
 ![Alt text](Images\Lab2\Victory.png "Pro_Gamer.png")
 *Our GOTY is officially complete !*
+
+# [Return to Home](./index.html) 
