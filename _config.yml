@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
-title: Vivian & Jeremy's super awesome page
-description: For the VR class
+remote-theme: pages-themes/merlot@v0.2.0
+title: Vivian & Jeremy's super awesome blog post
+description: This is the blog post for CSC_5IG01_TP-HCI for mixed reality.
+plugins:
+- jekyll-remote-theme
