@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=6b026a2fdb881899342aad3dc0f96ddbf3afa14f" media="screen">
+    <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="/assets/js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/headsmart.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Vivian &amp; Jeremy’s super awesome blog post</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<link rel="canonical" href="http://localhost:4000/lab2.html" />
+<meta property="og:url" content="http://localhost:4000/lab2.html" />
+<meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lab2.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vivian & Jeremy's super awesome blog post</h1>
+            <h2>This is the blog post for CSC_5IG01_TP-HCI for mixed reality.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1 id="lab-homework-2-unity-set-up">Lab Homework 2: Unity Set Up</h1>
+<h2 id="1--an-empty-project">1- An Empty Project</h2>
+<p>After installing the latest version of Unity and creating a 3D project, we are greeted with… a vast emptiness. To fill this empty world, we need ideas. And the easiest way to get ideas is to steal them from someone else. Enter: <strong>Mario 64 Red Coins challenges!</strong></p>
+
+<p><img src="Images\Lab2\Mario64_RedCoin.jpeg" alt="Alt text" title="A hidden coin in Jolly Roger Bay" />
+<em>Collect 8 red coins to earn a star !</em></p>
+
+<p>To recreate this experience, we need three essential components:</p>
+<ul>
+  <li>A player</li>
+  <li>Coins to collect</li>
+  <li>Terrain to move around on.</li>
+</ul>
+
+<p>For simplicity, the player will be represented by a capsule, the coins by deformed spheres, and the terrain by a flat plane. To make things a little bit more visually interesting, we’ll add materials to the objects: red for the coin (It’s called a red coin challenge for a reason) and some green for the terrain.</p>
+
+<p><img src="Images\Lab2\UnityScene_Populated.png" alt="Alt text" title="This is quite the level design" />
+<em>Tadaa! Our own little 8-coin challenge</em></p>
+
+<h2 id="2-creating-gameplay">2-Creating Gameplay</h2>
+<p>Now that the playground is set, we need a way to actually play the game. For that, we need two core features: A way to move the player around and a way to interact with the coins.</p>
+
+<h3 id="21--character-controls">2.1- Character Controls</h3>
+<p>To simplify the camera controls we’ll use a first-person view. To do this, we position the camera at eye level inside our capsule player and make it a child of the player GameObject. This way, whenever the player moves or rotates, the camera follows automatically.</p>
+
+<p>Next we want our player to move. We start by adding a Rigidbody component to the player to allow for physics-based interactions. Then, we create a new C# script named <code class="language-plaintext highlighter-rouge">Player.cs</code>.</p>
+
+<p>Since we are in a first-person perspective, we want the camera (and player) to rotate based on mouse movement. We retrieve the mouse’s X and Y movement using Unity’s input system and convert them into yaw (horizontal rotation of the player) and pitch (vertical rotation of the camera):</p>
+<ul>
+  <li>Yaw: rotates the entire player body (and camera) around the Y-axis.</li>
+  <li>Pitch: rotates only the camera around the X-axis. We clamp this value to prevent the player from breaking his own neck.</li>
+</ul>
+
+<p>Next we want our player to actually move. To do this we use Unity’s built in input functions:</p>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Input</span><span class="p">.</span><span class="nf">GetAxisRaw</span><span class="p">(</span><span class="s">"Horizontal"</span><span class="p">);</span>
+<span class="n">Input</span><span class="p">.</span><span class="nf">GetAxisRaw</span><span class="p">(</span><span class="s">"Vertical"</span><span class="p">);</span>
+</code></pre></div></div>
+<p>They return the directionnal input directly from the keyboard (in our case WASD and arrow keys)
+commands we can directly get the relevant player inputs. To control how fast and smoothly the player moves, we also define variables for speed, acceleration, and deceleration. Using these, we apply movement forces through the Rigidbody. Provided bellow is the main component of the movement code.</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">FixedUpdate</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//Without this line the player would move in world space not in local space</span>
+    <span class="n">Vector3</span> <span class="n">moveDir</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="nf">TransformDirection</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>  
+
+    <span class="n">Vector3</span> <span class="n">velocityChange</span> <span class="p">=</span> <span class="p">(</span><span class="n">moveDir</span> <span class="p">*</span> <span class="n">moveSpeed</span> <span class="p">-</span> <span class="n">rb</span><span class="p">.</span><span class="n">linearVelocity</span><span class="p">);</span>
+
+    <span class="c1">// Accelerate or descelerate</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">magnitude</span> <span class="p">&gt;</span> <span class="m">0.1f</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">velocityChange</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">ClampMagnitude</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">,</span> <span class="n">acceleration</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">fixedDeltaTime</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">velocityChange</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">ClampMagnitude</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">,</span> <span class="n">deceleration</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">fixedDeltaTime</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">rb</span><span class="p">.</span><span class="n">linearVelocity</span> <span class="p">+=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">velocityChange</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">FixedUpdate</code> is prefered to <code class="language-plaintext highlighter-rouge">Update</code> for physics based calculations. By default <code class="language-plaintext highlighter-rouge">FixedUpdate</code> runs at 50 times per second whereas <code class="language-plaintext highlighter-rouge">Update</code> is dependent on the end users machine and the number of frames per second may vary.</p>
+
+<h3 id="22--coin-interaction">2.2- Coin Interaction</h3>
+<p>First we want our coin to look like a proper red coin, let’s add some rotation.</p>
+
+<video width="320" height="180" controls="">
+  <source src="Images\Lab2\Coin.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p><em>Much better</em></p>
+
+<p>Next, we want the coin to react when the player touches it. We’ll treat the coin as a trigger meaning it won’t block the player, but it can detect when something enters its area. To do this:</p>
+<ul>
+  <li>We check the <code class="language-plaintext highlighter-rouge">is trigger</code> box in the Sphere Collider of the coin.</li>
+  <li>We add a ‘Coin’ tag to the coins.</li>
+  <li>User the <code class="language-plaintext highlighter-rouge">OnTriggerEnter()</code> method as shown bellow.</li>
+</ul>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span> <span class="n">other</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="nf">CompareTag</span><span class="p">(</span><span class="s">"Coin"</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Player picked up a coin!"</span><span class="p">);</span>
+            <span class="nf">Destroy</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Our player can now move around and interact with coins. 
+<img src="Images\Lab2\CoinsEaten.png" alt="Alt text" title="RIP to our fallen coinmarads" />
+<em>The core gameplay is completed but there is still more to do.</em></p>
+
+<h2 id="3-polishing">3-Polishing</h2>
+<p>A game truly shines through its polished details. To make ours sparkle, we’ll add a few finishing touches.</p>
+
+<p>First, let’s add feedback when the player collects a coin. And what’s more iconic than the classic <em>ding!</em> sound? We simply need to play an audio clip in <code class="language-plaintext highlighter-rouge">OnTriggerEnter()</code>.</p>
+
+<p>Next we want our player to know how far he is in his coin collecting journey, so we need UI. We create a canvas with a text element to display the number of collected coins. To keep track of our coins we’ll use a little trick: we create an empty game object and we assigned the coins as children of this game object. It keeps the hierarchy tidy and allows us to access the amount of coins at all times by counting the number of children the game object has. We then create a Game Manager which will count the coins at the start of the game and then update each time a coin is collected. Now that we know how many coins we have collected out of the total we can just update the text element accordingly.</p>
+
+<p><img src="Images\Lab2\UI.png" alt="Alt text" title="Other fonts could have been used" />
+<em>Only 5 more to go !</em></p>
+
+<p>Finally when all coins are collected we want to congratulate the player and offer him the option to either replay the level or quit the game. To achieve this:</p>
+<ol>
+  <li>We add a pannel to our previously created canvas with a text element and two button elements (a Restart and Quit)</li>
+  <li>Set the pannel as inactive by default</li>
+  <li>When all coins are collected we activate the pannel.</li>
+  <li>To give behaviour to our buttons we can create relevant methods in our game manager and assign them to the button.</li>
+</ol>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">public</span> <span class="k">void</span> <span class="nf">RestartGame</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">SceneManager</span><span class="p">.</span><span class="nf">LoadScene</span><span class="p">(</span><span class="n">SceneManager</span><span class="p">.</span><span class="nf">GetActiveScene</span><span class="p">().</span><span class="n">buildIndex</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">QuitGame</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Application</span><span class="p">.</span><span class="nf">Quit</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here is a table showcasing a couple of issues and how they were solved:
+|  Issue | Solution  |
+|—|—|
+|  The Cursor is hidden/locked due to first-person view | Unlock and show cursor when UI appears  | <br />
+|  The Player may move after victory | Set <code class="language-plaintext highlighter-rouge">Time.timeScale = 0</code> and reset to <code class="language-plaintext highlighter-rouge">1</code> upon restarting |</p>
+
+<p><img src="Images\Lab2\Victory.png" alt="Alt text" title="Pro_Gamer.png" />
+<em>Our GOTY is officially complete !</em></p>
+
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            
+              <p>this project by <a href="https://github.com/Jeremy-afk">Jeremy-afk</a> can be found on <a href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">GitHub</a></p>
+            
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+  </body>
+</html>

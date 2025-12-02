@@ -1,5 +1,6 @@
 remote-theme: pages-themes/merlot@v0.2.0
 title: Vivian & Jeremy's super awesome blog post
 description: This is the blog post for CSC_5IG01_TP-HCI for mixed reality.
+remote_theme: pages-themes/merlot@v0.2.0
 plugins:
-- jekyll-remote-theme
+- jekyll-remote-theme 
