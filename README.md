@@ -11,4 +11,4 @@ gem install bundler
 bundle install
 bundle exec jekyll serve
 ```
-3. Access locally at [http://localhost:4000]
+3. Access locally at http://localhost:4000
