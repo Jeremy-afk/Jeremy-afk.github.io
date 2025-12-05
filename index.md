@@ -9,7 +9,7 @@ title: Home
 Everything here is handcrafted by IP-Paris students, created with our very best wishes for you.
 Join us as we share and document our journey throughout this class.
 * * *
-This blog pos [**Lab 1**](./lab1.html) explains how we set up the blog.
+This blog post [**Lab 1**](./lab1.html) explains how we set up the blog.
 
 In [**Lab 2**](./lab2.html), focuses on configuring Unity and creating a simple coin-collection mini-game.
 
