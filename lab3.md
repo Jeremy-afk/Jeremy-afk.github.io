@@ -4,23 +4,25 @@ title: Home
 ---
 # Lab Homework 3: Roll-A-Ball
 ## 1- A quick tutorial
-As the little project that was done for lab2 is eerly similar to this project, we'll rapid fire through the tutorial part of the lab to get to the fun part (the IP Paris flavour).
+Since the little project from Lab 2 is eerily similar to this one, we’ll rapid-fire through the tutorial section so we can get to the fun part (the IP Paris flavour).
 
-After going through the first seven parts of the tutorial, we land with a very similar game to our red coin collection mini-game.
+After going through the first seven steps of the tutorial, we end up with a game very similar to our red coin-collection mini-game.
 
 <video width="640" height="360" controls>
   <source src="Images\Lab3\Part7.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-*We had a better endscreen*
+*We had a better end screen*
 
-Luckily part 8 is where it gets interesting. We add two extra elements: an AI agent that follows the player around and movable boxes.
+Thankfully, Part 8 is where things get interesting. We add two new elements:
+an AI agent that follows the player, and movable boxes.
 
 ### 1.1 AI Agent
-For the AI agent to work properly we need a way for it to navigate around. A naive way would be to have the enemy b-line towards the player but if we add a wall between the player and the enemy it's just going to get stuck. Luckily Unity got us covered with NavMesh. It works in two parts:
-* First we need to set the ground as a NavMesh Surface: it tells the AI agent where it can and cannot go. 
-* Second we create an enemy with a NavMesh agent, it allows us to customise the properties of our enemies (for instance how fast it walks). We also create a script to tell the agent who's their target as shown below.
+For the AI agent to behave correctly, it needs a way to navigate the environment.
+A naïve method would be to make the enemy run directly toward the player, but if a wall stands between them, it will simply get stuck. Fortunately, Unity has us covered with NavMesh. It works in two steps:
+* Set the ground as a NavMesh Surface: it tells the AI agent where it can and cannot go. 
+* Create an enemy with a NavMesh agent, it allows us to customise the properties of our enemies (for instance how fast it walks). We also create a script to tell the agent who their target is:
 
 ```c#
 public class EnemyMovement : MonoBehaviour
@@ -43,13 +45,16 @@ public class EnemyMovement : MonoBehaviour
 }
 ```
 ### 1.2 Movable Box
-To create a movable box we don't need to use any code. We add a couple of compenents to a box mainly: a Rigidbody with reduced weight so that we can toss the box around & a Nav Mesh Obstacle to make sure that our AI agents properly see the boxes and don't get stuck trying to get passed it.
+To create a movable box we don't need any code. We add a couple of components to a box: 
+* A Rigidbody with reduced weight so that we can toss the box around
+* A Nav Mesh Obstacle to make sure that our AI agents properly see the boxes and don’t get stuck trying to walk through it
 
 ![Alt text](Images\Lab3\BoxInspector.png "")
 
 *Inspector of the box*
 
-Something to note is that the way the tutorial tells us to handle the "death" of our player (by deleting the game object when the enemy collides) causes a crash with camera so we just add a condition to make sure everything works.
+One thing to note: the tutorial’s method for handling the player’s "death" (destroying the player object on collision) causes the camera to break and crash the game.
+We fixed this by adding a simple condition:
 
 ``` c#
     void LateUpdate() //Called after all other Update functions
@@ -73,7 +78,9 @@ We end up of a prototype that looks like this:
 ## 2- The IP Paris flavour
 We'll add a bit of level design to have something that feels like a real game. We will built 3 level of increasing difficulty where the objective is to collect all coins before moving on to the next level.
 
-Before we dive in the level design we'll create a simple title screen/level selection menu. The player will be able to chose which level they want to enter or quit the game. This allows us to tackle something we didn't talk about in the first blog: the scene list. Our title and each of our levels will be a scene of their own. We need to add all of them to our Scene list within our build profile so that when we want to change scene can call the ```LoadScene()``` method. It takes the sceneID as it's input.
+Before we dive in the level design we'll create a simple title screen/level selection menu. The player can chose which level to play or exit the game. This lets us talk about something we didn’t cover earlier: the Scene List. 
+
+Each level (and the title screen) is its own scene. We must add all scenes to our build settings so we can switch between them with ```LoadScene()``` method, which takes a sceneID as input.
 
 ``` c#
   SceneManager.LoadScene(sceneID);
@@ -82,15 +89,13 @@ Before we dive in the level design we'll create a simple title screen/level sele
 ![Alt text](Images\Lab3\SceneList.png "")
 *The SceneID is the number on the right*
 
-We can call this method when the player clicks a button to change the level their in our bring them back to the main menu.
+We trigger this method when the player clicks a button, to enter a level, to return to the main menu of even restart the level if the sceneID is the current scene.
 
 For the level design we'll employ a three step method:
-* In the first level we introduce the main mecanics: moving around, collecting pickups and moving boxes.
-* In the second level we introduce the enemy.
-* In the third level everything comes together in a grand finale.
+* First level: Introduce the core mecanics: movement, collecting pickups and moving boxes.
+* Second level: Add an enemy.
+* Third level: everything comes together in a final challenge.
 
-The level design process in itself is just moving our prefabs around to create interesting levels so nothing new under the sun. I could show you the end result but it's much better if you experience it yourself. Play the game in your browser by clicking [here](https://pumpkin-moon-studio.itch.io/my-rollin-ball)
-
-
+The level design process in itself is just moving our prefabs around to create interesting levels. I could show you the end result but it's much better if you experience it yourself. Play the game in your browser by clicking [here](https://pumpkin-moon-studio.itch.io/my-rollin-ball)
 
 # [Return to Home](./index.html) 
