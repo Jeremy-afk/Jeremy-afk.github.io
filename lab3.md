@@ -94,7 +94,7 @@ We trigger this method when the player clicks a button, to enter a level, to ret
 For the level design we'll employ a three step method:
 * First level: Introduce the core mecanics: movement, collecting pickups and moving boxes.
 * Second level: Add an enemy.
-* Third level: everything comes together in a final challenge.
+* Third level: Everything comes together in a final challenge. The enemy is larger and faster and the player has to go through a more difficult platforming challenge
 
 The level design process in itself is just moving our prefabs around to create interesting levels. I could show you the end result but it's much better if you experience it yourself. Play the game in your browser by clicking [here](https://pumpkin-moon-studio.itch.io/my-rollin-ball)
 
