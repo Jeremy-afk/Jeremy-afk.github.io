@@ -11,7 +11,7 @@ Our website began as a humble attempt to get a functional page online.
 
 The next step was to add a little makeup to our creation. So we browsed the GitHub Pages themes and decided to use [**merlot**](https://github.com/pages-themes/merlot). 
 
-![Alt text](Images\Lab1\merlottemplate.png "Merlot template")
+![Alt text](Images\lab1\merlottemplate.png "Merlot template")
 *MerLot*
 
 To apply the theme, we modified our _config.yml and added:
@@ -27,8 +27,8 @@ After the change, we proudly present to you:
 
 <div style="max-width:900px;">
 	<video controls style="width:100%; height:auto;" preload="metadata">
-		<source src="Images/Lab1/websitev2.mp4" type="video/mp4">
-		Your browser does not support the video tag. You can download the video <a href="Images/Lab1/websitev2.mp4">here</a>.
+		<source src="Images/lab1/websitev2.mp4" type="video/mp4">
+		Your browser does not support the video tag. You can download the video <a href="Images/lab1/websitev2.mp4">here</a>.
 	</video>
 </div>
 
@@ -37,7 +37,7 @@ After the change, we proudly present to you:
 Things were starting to look messy, so we added separate tabs for each lab.
 And on each tab, we added a:
 
-![Alt text](Images\Lab1\home.png "Home")
+![Alt text](Images\lab1\home.png "Home")
 *GO HOME!*
 
 This button lets users return to the homepage, very user-friendly!
