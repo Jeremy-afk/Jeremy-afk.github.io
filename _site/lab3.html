@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=d6fea325cc5d999963b42ff4a5fbd560ddd42f5a" media="screen">
+    <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="/assets/js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/headsmart.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Vivian &amp; Jeremy’s super awesome blog post</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<link rel="canonical" href="http://localhost:4000/lab3.html" />
+<meta property="og:url" content="http://localhost:4000/lab3.html" />
+<meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lab3.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vivian & Jeremy's super awesome blog post</h1>
+            <h2>This is the blog post for CSC_5IG01_TP-HCI for mixed reality.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1 id="lab-homework-3-roll-a-ball">Lab Homework 3: Roll-A-Ball</h1>
+<h2 id="1--a-quick-tutorial">1- A quick tutorial</h2>
+<p>Since the little project from Lab 2 is eerily similar to this one, we’ll rapid-fire through the tutorial section so we can get to the fun part (the IP Paris flavour).</p>
+
+<p>After going through the first seven steps of the tutorial, we end up with a game very similar to our red coin-collection mini-game.</p>
+
+<video width="640" height="360" controls="">
+  <source src="Images\Lab3\Part7.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p><em>We had a better end screen</em></p>
+
+<p>Thankfully, Part 8 is where things get interesting. We add two new elements:
+an AI agent that follows the player, and movable boxes.</p>
+
+<h3 id="11-ai-agent">1.1 AI Agent</h3>
+<p>For the AI agent to behave correctly, it needs a way to navigate the environment.
+A naïve method would be to make the enemy run directly toward the player, but if a wall stands between them, it will simply get stuck. Fortunately, Unity has us covered with NavMesh. It works in two steps:</p>
+<ul>
+  <li>Set the ground as a NavMesh Surface: it tells the AI agent where it can and cannot go.</li>
+  <li>Create an enemy with a NavMesh agent, it allows us to customise the properties of our enemies (for instance how fast it walks). We also create a script to tell the agent who their target is:</li>
+</ul>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">EnemyMovement</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">Transform</span> <span class="n">player</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">NavMeshAgent</span> <span class="n">navMeshAgent</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">navMeshAgent</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">NavMeshAgent</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">player</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">navMeshAgent</span><span class="p">.</span><span class="nf">SetDestination</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="12-movable-box">1.2 Movable Box</h3>
+<p>To create a movable box we don’t need any code. We add a couple of components to a box:</p>
+<ul>
+  <li>A Rigidbody with reduced weight so that we can toss the box around</li>
+  <li>A Nav Mesh Obstacle to make sure that our AI agents properly see the boxes and don’t get stuck trying to walk through it</li>
+</ul>
+
+<p>![Alt text](Images\Lab3\BoxInspector.png “”)</p>
+
+<p><em>Inspector of the box</em></p>
+
+<p>One thing to note: the tutorial’s method for handling the player’s “death” (destroying the player object on collision) causes the camera to break and crash the game.
+We fixed this by adding a simple condition:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">void</span> <span class="nf">LateUpdate</span><span class="p">()</span> <span class="c1">//Called after all other Update functions</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">player</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="n">player</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+</span> <span class="n">offset</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>We end up of a prototype that looks like this:</p>
+
+<video width="700" height="300" controls="">
+  <source src="Images\Lab3\Parts8.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p><em>That’s some pro gaming right here</em></p>
+
+<h2 id="2--the-ip-paris-flavour">2- The IP Paris flavour</h2>
+<p>We’ll add a bit of level design to have something that feels like a real game. We will built 3 level of increasing difficulty where the objective is to collect all coins before moving on to the next level.</p>
+
+<p>Before we dive in the level design we’ll create a simple title screen/level selection menu. The player can chose which level to play or exit the game. This lets us talk about something we didn’t cover earlier: the Scene List.</p>
+
+<p>Each level (and the title screen) is its own scene. We must add all scenes to our build settings so we can switch between them with <code class="language-plaintext highlighter-rouge">LoadScene()</code> method, which takes a sceneID as input.</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">SceneManager</span><span class="p">.</span><span class="nf">LoadScene</span><span class="p">(</span><span class="n">sceneID</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>![Alt text](Images\Lab3\SceneList.png “”)
+<em>The SceneID is the number on the right</em></p>
+
+<p>We trigger this method when the player clicks a button, to enter a level, to return to the main menu of even restart the level if the sceneID is the current scene.</p>
+
+<p>For the level design we’ll employ a three step method:</p>
+<ul>
+  <li>First level: Introduce the core mecanics: movement, collecting pickups and moving boxes.</li>
+  <li>Second level: Add an enemy.</li>
+  <li>Third level: Everything comes together in a final challenge. The enemy is larger and faster and the player has to go through a more difficult platforming challenge</li>
+</ul>
+
+<p>The level design process in itself is just moving our prefabs around to create interesting levels. I could show you the end result but it’s much better if you experience it yourself. Play the game in your browser by clicking <a href="https://pumpkin-moon-studio.itch.io/my-rollin-ball">here</a></p>
+
+<h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
+
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            
+              <p>this project by <a href="https://github.com/Jeremy-afk">Jeremy-afk</a> can be found on <a href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">GitHub</a></p>
+            
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+  </body>
+</html>
