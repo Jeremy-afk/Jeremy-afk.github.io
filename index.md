@@ -15,5 +15,7 @@ In [**Lab 2**](./lab2.html), focuses on configuring Unity and creating a simple 
 
 [**Lab 3**](./lab3.html) is another collection game. This time using a Unity tutorial that features NavMeshes.
 
+[**Lecture Homework 3: Locomotion Presentation**](./lecture3.html). Presents 3 ideas for locomotion techniques in VR.
+
 
 <!-- If you prefer a different layout, change `layout: default` to `layout: home` or another layout provided by the theme. -->
