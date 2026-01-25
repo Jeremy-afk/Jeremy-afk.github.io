@@ -25,14 +25,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
 <meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
-<link rel="canonical" href="http://localhost:4000/lab1.html" />
-<meta property="og:url" content="http://localhost:4000/lab1.html" />
+<link rel="canonical" href="http://localhost:4000/lecture4.html" />
+<meta property="og:url" content="http://localhost:4000/lecture4.html" />
 <meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lab1.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lecture4.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -76,44 +76,37 @@
 
 
       <section id="main_content">
-        <h1 id="lab-homework-1-blog-set-up">Lab Homework 1: Blog Set Up</h1>
+        <h1 id="lecture-homework-4-final-project-locomotion-ideation-prensentation">Lecture Homework 4: Final Project: Locomotion Ideation Prensentation</h1>
+<p>The slides for the presentation can be found <a href="https://docs.google.com/presentation/d/1XjsfyYwi1pgFntuuZDpUeb4SaRPNmTiiA-euwgHa2ks/edit?usp=sharing">here</a></p>
 
-<p>Our website began as a humble attempt to get a functional page online.</p>
+<p>The locomotion technique we are going to implement is Steering Wheel.</p>
 
-<p><img src="Images\Lab1\simpletemplate.png" alt="Alt text" title="Lab 2 version 1.." />
-<em>Simple, but it works…</em></p>
+<h2 id="setup">Setup</h2>
+<p>Our idea is inspired from a very classic karting game: Mario Kart since we are doing race car.</p>
 
-<p>The next step was to add a little makeup to our creation. So we browsed the GitHub Pages themes and decided to use <a href="https://github.com/pages-themes/merlot"><strong>merlot</strong></a>.</p>
+<p><strong>Inspiration</strong>: Mario Kart</p>
 
-<p><img src="Images\lab1\merlottemplate.png" alt="Alt text" title="Merlot template" />
-<em>MerLot</em></p>
+<p><img src="Images\Lecture4\mario.jpg" alt="Alt text" title="Mario Kart" /></p>
 
-<p>To apply the theme, we modified our _config.yml and added:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>remote_theme: pages-themes/merlot@v0.2.0
-plugins:
-- jekyll-remote-theme 
-</code></pre></div></div>
-<p><em>But the theme didn’t show up.</em></p>
+<p>But since we are in a VR game setting, we wanted to give user more freedom in exploring some of the settings. Hence, we also borrowed from the game I expect you to die, which is a virtual reality puzzle game.</p>
 
-<p>To fix this, we had to place our website’s content into index.md so the layout could be applied correctly.
-After the change, we proudly present to you:</p>
+<p><strong>Inspiration</strong>: I expect you to die
+<img src="Images\Lecture4\to-die.jpg" alt="Alt text" title="I expect you to die" /></p>
 
-<div style="max-width:900px;">
-	<video controls="" style="width:100%; height:auto;" preload="metadata">
-		<source src="Images/lab1/websitev2.mp4" type="video/mp4" />
-		Your browser does not support the video tag. You can download the video <a href="Images/lab1/websitev2.mp4">here</a>.
-	</video>
-</div>
+<p>The user will be place in a cabin to start. Situated in a virtual vehile, the user can see two hands/gloves where their joysticks are pointing at. They can use those to manipulate a steering wheel and an accelarator stick.</p>
 
-<p><em>Working but not perfect…</em></p>
+<p>The expected interface should look as follows:
+<img src="Images\Lecture4\interface.jpg" alt="Alt text" title="Virtual vehicle" /></p>
 
-<p>Things were starting to look messy, so we added separate tabs for each lab.
-And on each tab, we added a:</p>
+<h2 id="advancing">Advancing</h2>
+<p>We ruled out the option to turn based on the direction the user is facing because that would cause too much motion sick especially when the user is making sharp turns.</p>
 
-<p><img src="Images\lab1\home.png" alt="Alt text" title="Home" />
-<em>GO HOME!</em></p>
+<p>Instead, the vehicle will turn according to user’s manipulation of the steering wheel. They can change the direction and speed by grabbing the accelerator stick.</p>
 
-<p>This button lets users return to the homepage, very user-friendly!</p>
+<h2 id="jumping">Jumping</h2>
+<p>One of the tasks was the collect coins in the sky. 
+To accomplish that, we will put a eye-catching band on the track to remind user to jump. Regardless, the user will have the freedom to jump at any point they want to trial-and-error.
+There will be a “jump” button where the horn usually is. And the car will ascend in the sky once the button is pressed. Who knows, maybe it will also make a funny horn sound.</p>
 
 <h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
 

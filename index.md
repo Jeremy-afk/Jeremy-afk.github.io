@@ -17,5 +17,7 @@ In [**Lab 2**](./lab2.html), focuses on configuring Unity and creating a simple 
 
 [**Lecture Homework 3: Locomotion Presentation**](./lecture3.html). Presents 3 ideas for locomotion techniques in VR.
 
+[**Lecture Homework 4: Final Project: Locomotion Ideation Prensentation**](./lecture4.html). Present the locomotion technique we will use in our final project.
+
 
 <!-- If you prefer a different layout, change `layout: default` to `layout: home` or another layout provided by the theme. -->
