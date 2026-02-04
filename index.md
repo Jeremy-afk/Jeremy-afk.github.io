@@ -9,17 +9,20 @@ title: Home
 Everything here is handcrafted by IP-Paris students.
 Join us as we share and document our journey throughout this class.
 * * *
+
+[**Lecture Homework 1: Locomotion Presentation**](./lecture1.html). Presents 3 ideas for locomotion techniques in VR.
+
+[**Lecture Homework 2: Final Project: Locomotion Ideation Prensentation**](./lecture2.html). Present the locomotion technique we will use in our final project.
+
+
 This blog post [**Lab 1**](./lab1.html) explains how we set up the blog.
 
 In [**Lab 2**](./lab2.html), focuses on configuring Unity and creating a simple coin-collection mini-game.
 
 [**Lab 3**](./lab3.html) is another collection game. This time using a Unity tutorial that features NavMeshes.
 
-[**Lecture Homework 3: Locomotion Presentation**](./lecture3.html). Presents 3 ideas for locomotion techniques in VR.
-
-[**Lecture Homework 4: Final Project: Locomotion Ideation Prensentation**](./lecture4.html). Present the locomotion technique we will use in our final project.
-
 [**Lab 4**](./lab4.html) goes over how we setup Unity and the VR headset to work in unisson to create a simple VR game.
+
 
 
 <!-- If you prefer a different layout, change `layout: default` to `layout: home` or another layout provided by the theme. -->
