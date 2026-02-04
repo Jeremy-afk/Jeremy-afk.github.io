@@ -36,9 +36,11 @@ The can is a simple cylinder game object with a rigidbody and a box collider. I 
 
 To create the ball you can add a rigidbody to a sphere game object and add the XR Grab Interactable component. The component allows the ball the be grabbed and thrown. 
 
-<video width="320" height="180" controls>
+<video width="500" height="240" controls>
   <source src="Images\Lab4\Throw-a-ball.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+As the video shows, the ball can be grabbed by a great distance and thrown quite far. Because of this you can just move the ball around to knock the cans (which is cheating) but still very fun to do.
 
 # [Return to Home](./index.html) 
