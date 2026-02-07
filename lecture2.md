@@ -17,6 +17,7 @@ Since we are in a VR game setting, we wanted to give user more freedom in explor
 
 
 **Inspiration**: I expect you to die
+
 ![Alt text](Images\Lecture2\to-die.jpg "I expect you to die")
 
 The user will be place in a cabin to start. Situated in a virtual vehicule, the user can see two hands/gloves where their joysticks are pointing at. They can use those to manipulate a steering wheel and an accelarator stick.

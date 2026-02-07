@@ -5,59 +5,49 @@ title: Home
 
 # Lecture Homework 3: Final Project: Evaluating the locomotion technique
 
-We performed evaluation on in total 3 participants. And they are finished in total 3 rounds. The results are as follows.
+We performed evaluation on 3 participants. Each round corresponds to a third of the track.
 
 ## Round 1
 
 | Player | Time (s) | Accuracy (%) |
 | :----- | :------- | :----------- |
-| 1      | 35       | 100          |
-| 2      | 91       | 85           |
-| 3      | 36       | 94           |
+| 1      | 30       | 100          |
+| 2      | 34       | 100           |
+| 3      | 63       | 60           |
 
 ## Round 2
 
 | Player | Time (s) | Accuracy (%) |
 | :----- | :------- | :----------- |
-| 1      | 33       | 90           |
-| 2      | 80       | 86           |
-| 3      | 32       | 70           |
+| 1      | 35       | 95           |
+| 2      | 45       | 75           |
+| 3      | 75       | 80           |
 
 ## Round 3
 
 | Player | Time (s) | Accuracy (%) |
 | :----- | :------- | :----------- |
-| 1      | 32       | 96           |
-| 2      | 82       | 90           |
-| 3      | 36       | 92           |
+| 1      | 30       | 100           |
+| 2      | 38       | 90           |
+| 3      | 50       | 94           |
 
 ## Average
 
-Time per round: 54s, 48s, 50s
+Time per round: 42s, 52s, 39s
 
-Accuracy: 93%, 82%, 93%
+Accuracy: 86%, 83%, 93%
 
 ## Survey Results
 
-We surveyed the participants' **motion sickness level**, **difficulty to complete task**, **virtual presence**, **enjoyment** using a Likert scale.
-
-User 1 (shown in the demo video we recorded) got used to the mechanics really quickly and was able to operate smoothly. And he has give us good feedback on most of the items.
-
-
-User 2 is relatively slow in learning the mechanics. She thinks that "the sensitivity of the accelerating stick makes it really hard to move forward". She struggled a lot with it.
-
-
-User 3 also got a good hold of the game mechanics pretty quickly. He reported that in general the schema of driving is fun but it wasn't really enjoyable to ascend/descend using the buttons on the joysticks.
-
-
+We surveyed the participants' **motion sickness level**, **difficulty to complete task**, **virtual presence**, **enjoyment** using a scale graded from 1-10. 
 
 Here is the detailed results:
 
-| Player  | Motion Sickness | Ease to play | Virtual Presence | Enjoyment |
+| Player  | Motion Sickness | Handling | Virtual Presence | Enjoyment |
 | :------ | :-------------- | :----------- | ---------------- | --------- |
-| 1       | 1               | 8            | 9                | 8         |
+| 1       | 3               | 4            | 10               | 8         |
 | 2       | 3               | 5            | 10               | 6         |
-| 3       | 2               | 7            | 8                | 8         |
-| Average | 2               | 6            | 9                | 7         |
+| 3       | 5               | 7            | 8                | 6         |
+| Average | 3.6             | 5.3          | 9.3              | 6.6       |
 
 # [Return to Home](./index.html)
