@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=c0d21446447d64fb726786d307162c662d8b2f86" media="screen">
+    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
     <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
     <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
 
@@ -76,37 +76,96 @@
 
 
       <section id="main_content">
-        <h1 id="lecture-homework-4-final-project-locomotion-ideation-prensentation">Lecture Homework 4: Final Project: Locomotion Ideation Prensentation</h1>
-<p>The slides for the presentation can be found <a href="https://docs.google.com/presentation/d/1XjsfyYwi1pgFntuuZDpUeb4SaRPNmTiiA-euwgHa2ks/edit?usp=sharing">here</a></p>
+        <h1 id="lecture-homework-4-final-project-final-presentation">Lecture Homework 4: Final Project: Final Presentation</h1>
 
-<p>The locomotion technique we are going to implement is Steering Wheel.</p>
+<h2 id="concept">Concept</h2>
+<p>We take inspiration from the game <em>Mario Kart</em> and the VR escape game <em>I Expect You To Die</em>.</p>
 
-<h2 id="setup">Setup</h2>
-<p>Our idea is inspired from a very classic karting game: Mario Kart since we are doing race car.</p>
+<p><em>Mario Kart</em> is a long-running arcade-style kart racing franchise developed by Nintendo. Players race as characters from the Mario universe on imaginative tracks while using power-up items (e.g., shells, bananas, lightning) to gain advantages or disrupt opponents.</p>
 
-<p><strong>Inspiration</strong>: Mario Kart</p>
+<p>We were inspired from the “driving” component from Mario Kart because it would introduce less motion sick and would allow user to move around in an intuitive way.</p>
 
-<p><img src="Images\Lecture4\mario.jpg" alt="Alt text" title="Mario Kart" /></p>
+<p><img src="Images\Lecture2\mario.jpg" alt="Alt text" title="Mario Kart" /></p>
 
-<p>But since we are in a VR game setting, we wanted to give user more freedom in exploring some of the settings. Hence, we also borrowed from the game I expect you to die, which is a virtual reality puzzle game.</p>
+<p><em>I Expect You To Die</em> is a VR escape-room puzzle series developed by Schell Games. You play as a secret agent trapped in deadly scenarios (booby-trapped cars, submarines, laboratories) and must solve puzzles to survive.</p>
 
-<p><strong>Inspiration</strong>: I expect you to die
-<img src="Images\Lecture4\to-die.jpg" alt="Alt text" title="I expect you to die" /></p>
+<p>Since <em>I Expect You To Die</em> is a VR game, it gave us a good guideline for increasing virtual presence. It inspired us to introduce multiple elements that embody different locomotion we want the users to explore.</p>
 
-<p>The user will be place in a cabin to start. Situated in a virtual vehile, the user can see two hands/gloves where their joysticks are pointing at. They can use those to manipulate a steering wheel and an accelarator stick.</p>
+<p><img src="Images\Lecture2\to-die.jpg" alt="Alt text" title="I expect you to die" /></p>
 
-<p>The expected interface should look as follows:
-<img src="Images\Lecture4\interface.jpg" alt="Alt text" title="Virtual vehicle" /></p>
+<p>Our implementations mainly include three parts:</p>
+<ol>
+  <li>Steering Wheel: Steering Control</li>
+  <li>Speed Stick: Forward / Backward</li>
+  <li>Elevation: Jump button where the horn is. Due to technical difficulty, we prototyped this part with buttons on the joysticks.</li>
+</ol>
 
-<h2 id="advancing">Advancing</h2>
-<p>We ruled out the option to turn based on the direction the user is facing because that would cause too much motion sick especially when the user is making sharp turns.</p>
+<p><strong>Steering Wheel and Lever</strong></p>
 
-<p>Instead, the vehicle will turn according to user’s manipulation of the steering wheel. They can change the direction and speed by grabbing the accelerator stick.</p>
+<p><img src="Images\Lab5\Lever_and_wheel.png" alt="Alt text" title="Controls" /></p>
 
-<h2 id="jumping">Jumping</h2>
-<p>One of the tasks was the collect coins in the sky. 
-To accomplish that, we will put a eye-catching band on the track to remind user to jump. Regardless, the user will have the freedom to jump at any point they want to trial-and-error.
-There will be a “jump” button where the horn usually is. And the car will ascend in the sky once the button is pressed. Who knows, maybe it will also make a funny horn sound.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Here is the hierarchy of controls:</p>
+
+<ul>
+  <li>Car (Box Collider)
+    <ul>
+      <li>XR Origin (Camera / Controllers)</li>
+      <li>Steering Wheel (RB + Collider)</li>
+      <li>Speedstick Pivot
+        <ul>
+          <li>Speedstick (RB + Collider)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Canvas</li>
+</ul>
+
+<p><strong>Hierarchy</strong></p>
+
+<p><img src="Images\Lab5\Hierarchy.png" alt="Alt text" title="Hierarchy" /></p>
+
+<p>The project is structured around a parent Car GameObject, which contains the primary interaction and locomotion components for the VR driving experience. The Car object includes a Box Collider that defines the physical boundary of the vehicle within the Unity physics system.</p>
+
+<p>Nested within the Car is the XR Origin, which manages the VR camera and controller tracking. This component anchors the player’s viewpoint and hand interactions to the vehicle, ensuring that head and controller movements remain spatially consistent with the car’s position.</p>
+
+<p>The interactive driving controls are implemented as follows:</p>
+
+<p>Steering Wheel: Equipped with a Rigidbody (RB) and Collider, enabling physics-based rotational interaction. The player can grab and rotate the wheel to control steering input.</p>
+
+<p>Speedstick Pivot: Acts as the rotational anchor point for throttle control.</p>
+
+<p>Speedstick: Also configured with a Rigidbody and Collider, allowing the player to physically manipulate it to adjust acceleration.</p>
+
+<h2 id="challenges">Challenges</h2>
+
+<h3 id="1-interaction-package-meta-xr-interaction-sdk-vs-unity-xr-toolkit">1. Interaction Package: Meta XR Interaction SDK vs Unity XR Toolkit</h3>
+
+<p>During development, we encountered limitations with Unity’s default <strong>XR Grab Interactable</strong> component. By default, the grab system transfers transform control to the interaction framework, effectively overriding the object’s original parent-child relationship. This created structural issues in our hierarchy and reduced fine-grained control over how objects behaved while being manipulated. To address this, we had to extend and override <strong>XRBaseInteractable</strong> to implement custom interaction logic. Additionally, the default grab behavior anchors interaction at the object’s center point. While acceptable for free objects, this proved problematic for constrained elements such as levers, where interaction should occur around a fixed pivot rather than the geometric center.</p>
+
+<p>Since the original evaluation is based upon the MetaXR Interaction SDK, we had to redo the framework and use a simple coin collection script and timed each round manually.</p>
+
+<h3 id="2-physics">2. Physics</h3>
+
+<p>When using a single Box Collider, climbing a hill becomes unstable because the contact between the vehicle and the slope is too simplistic and physically unrealistic. Instead of distributed contact like real wheels, the box often touches the slope at an edge or corner, which creates large torque impulses when Unity resolves collisions. Since physics updates occur in discrete timesteps, small penetrations into the slope generate corrective forces that cause jitter or unwanted rotation. Additionally, friction is applied uniformly across the collider rather than modeling rolling traction, so the car may either slide backward or stick unnaturally. As a result, uphill movement feels unstable and difficult to control.</p>
+
+<p>Since we have limited time to implement the locomotion, we have decided to use a temporary fix using simple transforms. With more time, we would fix this with a raycast-based suspension system or Unity’s WheelCollider.</p>
+
+<h3 id="3-video-demonstration">3. Video Demonstration</h3>
+<div style="max-width:900px;">
+	<video controls="" style="width:100%; height:auto;" preload="metadata">
+		<source src="Images/Lab5/Video Demo.mp4" type="video/mp4" />
+		Your browser does not support the video tag. You can download the video <a href="Images/Lab5/Video Demo.mp4">here</a>.
+	</video>
+</div>
+
+<h2 id="evaluation">Evaluation</h2>
+<p>The detailed statistics for the user test can be found <a href="./lecture3.html">here</a>.</p>
+
+<p>The participants reported very low motion sick and high virtual presence. However, some participants reported difficulty in operating especially in the first round. That is partially due to the broken mechanism that we have right now. We expect the participants to feel more at ease operating the vehicle after the collision detection is implemented.</p>
+
+<p>Additionally, one participants complained about the position of the lever being inconvenient to hold. She felt fatigued after three rounds because she couldn’t stretch her right arm. This shall be improved with more time as well.</p>
 
 <h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
 

@@ -14,6 +14,10 @@ Join us as we share and document our journey throughout this class.
 
 [**Lecture Homework 2: Final Project: Locomotion Ideation Prensentation**](./lecture2.html). Present the locomotion technique we will use in our final project.
 
+[**Lecture Homework 3: Final Project: Evaluating the locomotion technique**](./lecture3.html). Evaluate the locomotion technique we implemented.
+
+[**Lecture Homework 4: Final Project: Final Presentation**](./lecture4.html). Presenting the project as a whole.
+
 
 This blog post [**Lab 1**](./lab1.html) explains how we set up the blog.
 

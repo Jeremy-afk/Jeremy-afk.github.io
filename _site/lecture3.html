@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=c0d21446447d64fb726786d307162c662d8b2f86" media="screen">
+    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
     <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
     <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
 
@@ -76,43 +76,156 @@
 
 
       <section id="main_content">
-        <h1 id="lecture-homework-3-locomotion-presentation">Lecture Homework 3: Locomotion Presentation</h1>
-<p>The slides for the presentation can be found <a href="https://docs.google.com/presentation/d/1Kme5oimut_yWd0Myokfca8hzgemqivB1G30OxfgxzI0/edit?usp=sharing">here</a></p>
+        <h1 id="lecture-homework-3-final-project-evaluating-the-locomotion-technique">Lecture Homework 3: Final Project: Evaluating the locomotion technique</h1>
 
-<h2 id="idea-1">Idea 1:</h2>
-<p><strong>Goals and Implementation</strong>: In the virtual world, we have a set of “paths” for magnetic gliding. The world is filled with invisible “magnetic rails.” When the user points their controller at a destination and presses a button, they snap onto the nearest rail and glide smoothly. The rail handles curves and acceleration automatically to avoid sickness.</p>
+<p>We performed evaluation on in total 3 participants. And they are finished in total 3 rounds. The results are as follows.</p>
 
-<p>When the user pulls the trigger harder, the glide will be faster correspondingly. This locomotion aims for fast speed, low motion sickness.</p>
+<h2 id="round-1">Round 1</h2>
 
-<p><strong>Evaluation</strong>: Time to reach destinations, Motion sickness levels, User comfort/perceived control</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Player</th>
+      <th style="text-align: left">Time (s)</th>
+      <th style="text-align: left">Accuracy (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">35</td>
+      <td style="text-align: left">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">91</td>
+      <td style="text-align: left">85</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">36</td>
+      <td style="text-align: left">94</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>Inspiration</strong>: It Takes Two
-<img src="Images\Lecture3\two.jpg" alt="Alt text" title="It Takes Two" /></p>
+<h2 id="round-2">Round 2</h2>
 
-<p><em>It Takes Two uses gliding in some scenes</em></p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Player</th>
+      <th style="text-align: left">Time (s)</th>
+      <th style="text-align: left">Accuracy (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">33</td>
+      <td style="text-align: left">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">80</td>
+      <td style="text-align: left">86</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">32</td>
+      <td style="text-align: left">70</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="idea-2-fairy-flaps">Idea 2: Fairy flaps</h2>
-<p><strong>Goals and Implementation</strong>: The user holds their controllers like delicate “fairy wings.” Tiny wrist flicks or light hand flaps cause gentle movement in the direction where the user is looking at.
-Faster flaps suggests slightly stronger push. 
-The system resembles a “fairy” experience, where you use your hand to control where you go like flapping wings. By holding the hands close together in front of the body, the user enters hover mode. And they look around while remaining stationary.</p>
+<h2 id="round-3">Round 3</h2>
 
-<p>This locomotion should enable precise navigation and low motion sickness.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Player</th>
+      <th style="text-align: left">Time (s)</th>
+      <th style="text-align: left">Accuracy (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">32</td>
+      <td style="text-align: left">96</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">82</td>
+      <td style="text-align: left">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">36</td>
+      <td style="text-align: left">92</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>Evaluation</strong>: How precise the user can navigate to a certain point/object, motion-sickness level, how long the user can use VR without feeling fatigue</p>
+<h2 id="average">Average</h2>
 
-<p><strong>Inspiration</strong>: Split Fiction
-<img src="Images\Lecture3\split-fiction.jpg" alt="Alt text" title="Split Fiction" /></p>
+<p>Time per round: 54s, 48s, 50s</p>
 
-<p><em>Fairying in Split Fiction</em></p>
+<p>Accuracy: 93%, 82%, 93%</p>
 
-<h2 id="idea-3-hand-over-hand-movement">Idea 3: Hand-Over-Hand movement</h2>
-<p><strong>Goals and Implementation</strong>: The player pulls themselves around by grabbing virtual surfaces (ladders, walls,…). The objective is to mimic real life climbing. This locomotion system works with the player reaching for virtual “hold point” like a ladder bar or a rock. Once reached the character moves closer to where they grabbed. This movement method could be further refined to use an energy system to mimic fatigue.</p>
+<h2 id="survey-results">Survey Results</h2>
 
-<p><strong>Evaluation</strong>: We should compare this locomotion technique with others that make sense for our use case. Like teleportation, joystick locomotion. Even within our own technique we could compare different implementations. For instance: does the player automatically move once they grab a new hold point or should they pull to move themselves ? There are other things to take into consideration: is climbing our only way to move around or is it blended with others ? Does it make sense to have several movement methods ? These are all questions that should be taken into consideration and evaluated. This could be measured with different performance indicators: we could check the success rate of a particular task with a given locomotion technique, check with the user which technique causes more motion sickness, and the accuracy of the player when reaching for a grip. Players with different arm lengths mightn’t have the same experience so how do we account for that ?</p>
+<p>We surveyed the participants’ <strong>motion sickness level</strong>, <strong>difficulty to complete task</strong>, <strong>virtual presence</strong>, <strong>enjoyment</strong> using a Likert scale.</p>
 
-<p><img src="Images\Lecture3\TheClimb.jpg" alt="Alt text" title="The Climb" /></p>
+<p>User 1 (shown in the demo video we recorded) got used to the mechanics really quickly and was able to operate smoothly. And he has give us good feedback on most of the items.</p>
 
-<p><em>“The Climb” uses Hand-Over-Hand locomotion</em></p>
+<p>User 2 is relatively slow in learning the mechanics. She thinks that “the sensitivity of the accelerating stick makes it really hard to move forward”. She struggled a lot with it.</p>
+
+<p>User 3 also got a good hold of the game mechanics pretty quickly. He reported that in general the schema of driving is fun but it wasn’t really enjoyable to ascend/descend using the buttons on the joysticks.</p>
+
+<p>Here is the detailed results:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Player</th>
+      <th style="text-align: left">Motion Sickness</th>
+      <th style="text-align: left">Ease to play</th>
+      <th>Virtual Presence</th>
+      <th>Enjoyment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">8</td>
+      <td>9</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">5</td>
+      <td>10</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">7</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Average</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">6</td>
+      <td>9</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
 
 <h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
 

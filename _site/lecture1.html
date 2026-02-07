@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
+    <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="/assets/js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/headsmart.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Vivian &amp; Jeremy’s super awesome blog post</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<link rel="canonical" href="http://localhost:4000/lecture1.html" />
+<meta property="og:url" content="http://localhost:4000/lecture1.html" />
+<meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lecture1.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vivian & Jeremy's super awesome blog post</h1>
+            <h2>This is the blog post for CSC_5IG01_TP-HCI for mixed reality.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1 id="lecture-homework-1-locomotion-presentation">Lecture Homework 1: Locomotion Presentation</h1>
+<p>The slides for the presentation can be found <a href="https://docs.google.com/presentation/d/1Kme5oimut_yWd0Myokfca8hzgemqivB1G30OxfgxzI0/edit?usp=sharing">here</a></p>
+
+<h2 id="idea-1">Idea 1:</h2>
+<p><strong>Goals and Implementation</strong>: In the virtual world, we have a set of “paths” for magnetic gliding. The world is filled with invisible “magnetic rails.” When the user points their controller at a destination and presses a button, they snap onto the nearest rail and glide smoothly. The rail handles curves and acceleration automatically to avoid sickness.</p>
+
+<p>When the user pulls the trigger harder, the glide will be faster correspondingly. This locomotion aims for fast speed, low motion sickness.</p>
+
+<p><strong>Evaluation</strong>: Time to reach destinations, Motion sickness levels, User comfort/perceived control</p>
+
+<p><strong>Inspiration</strong>: It Takes Two
+<img src="Images\Lecture1\two.jpg" alt="Alt text" title="It Takes Two" /></p>
+
+<p><em>It Takes Two uses gliding in some scenes</em></p>
+
+<h2 id="idea-2-fairy-flaps">Idea 2: Fairy flaps</h2>
+<p><strong>Goals and Implementation</strong>: The user holds their controllers like delicate “fairy wings.” Tiny wrist flicks or light hand flaps cause gentle movement in the direction where the user is looking at.
+Faster flaps suggests slightly stronger push. 
+The system resembles a “fairy” experience, where you use your hand to control where you go like flapping wings. By holding the hands close together in front of the body, the user enters hover mode. And they look around while remaining stationary.</p>
+
+<p>This locomotion should enable precise navigation and low motion sickness.</p>
+
+<p><strong>Evaluation</strong>: How precise the user can navigate to a certain point/object, motion-sickness level, how long the user can use VR without feeling fatigue</p>
+
+<p><strong>Inspiration</strong>: Split Fiction
+<img src="Images\Lecture1\split-fiction.jpg" alt="Alt text" title="Split Fiction" /></p>
+
+<p><em>Fairying in Split Fiction</em></p>
+
+<h2 id="idea-3-hand-over-hand-movement">Idea 3: Hand-Over-Hand movement</h2>
+<p><strong>Goals and Implementation</strong>: The player pulls themselves around by grabbing virtual surfaces (ladders, walls,…). The objective is to mimic real life climbing. This locomotion system works with the player reaching for virtual “hold point” like a ladder bar or a rock. Once reached the character moves closer to where they grabbed. This movement method could be further refined to use an energy system to mimic fatigue.</p>
+
+<p><strong>Evaluation</strong>: We should compare this locomotion technique with others that make sense for our use case. Like teleportation, joystick locomotion. Even within our own technique we could compare different implementations. For instance: does the player automatically move once they grab a new hold point or should they pull to move themselves ? There are other things to take into consideration: is climbing our only way to move around or is it blended with others ? Does it make sense to have several movement methods ? These are all questions that should be taken into consideration and evaluated. This could be measured with different performance indicators: we could check the success rate of a particular task with a given locomotion technique, check with the user which technique causes more motion sickness, and the accuracy of the player when reaching for a grip. Players with different arm lengths mightn’t have the same experience so how do we account for that ?</p>
+
+<p><img src="Images\Lecture1\TheClimb.jpg" alt="Alt text" title="The Climb" /></p>
+
+<p><em>“The Climb” uses Hand-Over-Hand locomotion</em></p>
+
+<h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
+
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            
+              <p>this project by <a href="https://github.com/Jeremy-afk">Jeremy-afk</a> can be found on <a href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">GitHub</a></p>
+            
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+  </body>
+</html>

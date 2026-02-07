@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
+    <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="/assets/js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/headsmart.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Vivian &amp; Jeremy’s super awesome blog post</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Home" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<link rel="canonical" href="http://localhost:4000/lab4.html" />
+<meta property="og:url" content="http://localhost:4000/lab4.html" />
+<meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Home","url":"http://localhost:4000/lab4.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vivian & Jeremy's super awesome blog post</h1>
+            <h2>This is the blog post for CSC_5IG01_TP-HCI for mixed reality.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1 id="lab-homework-3-throw-a-ball">Lab Homework 3: Throw-A-Ball</h1>
+<p>The resulting application may seem small but we can not understate the time it took to debug everything. A lot of hair pulling sessions had to happen in order for this lab to come to fruition.</p>
+
+<h2 id="1--headset-setup">1- Headset setup</h2>
+<p>The first step was to setup the VR headset so that it is in “developper mode”. The recipe is as follow:</p>
+<ul>
+  <li>Download the Meta Horizon app on your phone.</li>
+  <li>Make sure that you are connected to the same wifi network as the headset.</li>
+  <li>Activate bluetooth and localisation.</li>
+  <li>To get the phone to actually connect to the headset is still a bit mysterious. I’ve found sucess in activating “mirror mode”  which allows you to see what is happening in the headset. When deactivated you should be connected to the headset.</li>
+  <li>You also need a Meta developper account, luckily it is not very hard to setup and you only needs to confirm an email address.</li>
+  <li>You may now activate “developper mode” in your headset.</li>
+</ul>
+
+<p><img src="Images\Lab4\Meta_Horizon.jpg" alt="Alt text" title="The meta horizon app" />
+<em>The meta horizon app</em></p>
+
+<h2 id="2--unity-setup">2- Unity setup</h2>
+<p>You need developper mode in order to send data from unity and to execute “unidentified apps” which are the builds of the project you are working on. The steps I took may not be the most effective ones but they were the result of trial and error.</p>
+<ul>
+  <li>In the Unity Asset store get the following packages: Meta XR Simulator, Meta Interaction SDK and Meta XR Core SDK.</li>
+  <li>Along with the previously mentionned packages, I imported the XR plugin management, XR interaction toolkit and XR hands.</li>
+  <li>Switch the build profile to android and make sure to select the headset as the run device.</li>
+  <li>In project settings make sure that the in Player/Minimum API level is high enough to be compatible with the packages you installed.</li>
+  <li>In XR Plug-In Management select the OpenXR Plug-In Provider.</li>
+  <li>You may now import the features you need.</li>
+  <li>One part the I struggled with a lot is getting the controllers working. I found a sample project in the XR Interaction Toolkit package called “Hands Interaction Demo”. There is a demo scene that shows a lot of different interactions and most importantly the controllers work. So I snatched prefabs and put them in my scene. 
+<img src="Images\Lab4\Hands_Demo_Scene.png" alt="Alt text" title="Hands demo scene" />
+<em>Hands demo Scene</em></li>
+</ul>
+
+<h2 id="3--game-creation">3- Game creation</h2>
+<p>Since I was starting from a blank project, I wanted to try something new. I took inspiration from a traditionnal carnival game called “Chamboule-tout”. You have knock down a pile of cans from a distance by throwing a ball.</p>
+
+<p>The can is a simple cylinder game object with a rigidbody and a box collider. I setup the mass to be a little bit lighter than the ball so they can satisfyingly fly when they get hit.</p>
+
+<p>To create the ball you can add a rigidbody to a sphere game object and add the XR Grab Interactable component. The component allows the ball the be grabbed and thrown.</p>
+
+<video width="500" height="240" controls="">
+  <source src="Images\Lab4\Throw-a-ball.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p>As the video shows, the ball can be grabbed by a great distance and thrown quite far. Because of this you can just move the ball around to knock the cans (which is cheating) but still very fun to do.</p>
+
+<h1 id="return-to-home"><a href="./index.html">Return to Home</a></h1>
+
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            
+              <p>this project by <a href="https://github.com/Jeremy-afk">Jeremy-afk</a> can be found on <a href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">GitHub</a></p>
+            
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+  </body>
+</html>

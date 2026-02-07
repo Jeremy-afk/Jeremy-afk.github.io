@@ -3,7 +3,6 @@ layout: default
 title: Home
 ---
 # Lecture Homework 2: Final Project: Locomotion Ideation Prensentation
-The slides for the presentation can be found [here](https://docs.google.com/presentation/d/1XjsfyYwi1pgFntuuZDpUeb4SaRPNmTiiA-euwgHa2ks/edit?usp=sharing)
 
 The locomotion technique we are going to implement is Steering Wheel.
 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
+    <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
+
+    <script src="/assets/js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/headsmart.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 5 : VR Locomotion technique Implementation | Vivian &amp; Jeremy’s super awesome blog post</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Lab 5 : VR Locomotion technique Implementation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<meta property="og:description" content="This is the blog post for CSC_5IG01_TP-HCI for mixed reality." />
+<link rel="canonical" href="http://localhost:4000/lab5.html" />
+<meta property="og:url" content="http://localhost:4000/lab5.html" />
+<meta property="og:site_name" content="Vivian &amp; Jeremy’s super awesome blog post" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 5 : VR Locomotion technique Implementation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the blog post for CSC_5IG01_TP-HCI for mixed reality.","headline":"Lab 5 : VR Locomotion technique Implementation","url":"http://localhost:4000/lab5.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vivian & Jeremy's super awesome blog post</h1>
+            <h2>This is the blog post for CSC_5IG01_TP-HCI for mixed reality.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      
+        <div id="no-downloads">
+          <span class="inner">
+          </span>
+        </div>
+      
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1 id="lab-5--vr-locomotion-technique-implementation">Lab 5 : VR Locomotion technique Implementation</h1>
+<h2 id="interaction-concept">Interaction concept</h2>
+<p>For a refresher on the interaction concept, you can check it out <a href="./lecture2.html"><strong>here</strong></a>.</p>
+<h2 id="technical-implementation">Technical Implementation</h2>
+<p><img src="Images\Lab5\Hierarchy.png" alt="Alt text" title="Car Hierarchy" /></p>
+
+<p><em>Car Hierarchy</em></p>
+
+<p>Here is an explation of each child GameObject and its corresponding components:</p>
+<ul>
+  <li>Car: is made of three components:
+    <ul>
+      <li>A very simple movement script that moves the car up/down when the right-hand primary/secondary buttons are pressed. This is used to control the height of our car because the locomotion implementation acts directly on the transform component, so otherwise we would phase through the hill. Moreover, it allows us to collect the coins at the end. We dropped the idea of an in-game jump button on the horn because driving already felt very hectic and took some getting used to, so adding an extra button would raise the skill floor too high.</li>
+      <li>A coin manager script recycled from <a href="./lab1.html"><strong>Lab 1</strong></a>. Since we changed the camera/controller rig, it broke the existing implementation of the coin collection mechanic. We modified the coin GameObject to work with this script.</li>
+      <li>A box collider that allows collision between the coins and the car so they can be picked up.</li>
+    </ul>
+  </li>
+  <li>CameraAnchor: this GameObject is ultimately useless. The initial idea was to have a script that only allowed the camera to move but not rotate in order to reduce motion sickness. We then realized that when driving a car, you both translate and <strong>rotate</strong> with it.</li>
+  <li>XR Origin comes from the Unity XR Interaction Toolkit package. We had more success using it than the Meta one, so we switched.</li>
+  <li>Steering Wheel:
+    <ul>
+      <li>The mesh is a model made in Blender, because Unity does not provide a donut mesh by default, and a simple circular steering wheel did not look good.</li>
+      <li>A custom implementation of the <code class="language-plaintext highlighter-rouge">XRBaseInteractable</code> component, which by default allows the object to be grabbed. The local rotation around the Z axis is used as input for the car’s rotation around its Y axis (both in local coordinates).</li>
+      <li>It has a Rigidbody and a box collider to work with the <code class="language-plaintext highlighter-rouge">XRBaseInteractable</code> component. The Rigidbody was set to kinematic because physics did not need to be applied to the object.</li>
+    </ul>
+  </li>
+  <li>Speedstick pivot/Speedstick (which ended up being useless): the idea was for the lever to rotate around its base. However, when interacting with the object, you grab it by the middle, which causes it to rotate around its center. That is why the lever is placed higher than expected, so you do not have to reach down to grab the center instead of the tip. It functions very similarly to the steering wheel, but converts the rotation around the local X axis (between −45° and +45°) into forward/backward movement of the parent car.</li>
+</ul>
+
+<p><img src="Images\Lab5\lever_and_wheel.png" alt="Alt text" title="lever and wheel" />.</p>
+
+<p>As you can see the lever is on the same level as the wheel.</p>
+
+<ul>
+  <li>A canvas set to world space, because the camera rig works differently and does not recognize the typical screen-space overlay used to display how many coins the player has collected.</li>
+</ul>
+
+<h2 id="improvement-ideas">Improvement ideas</h2>
+<ul>
+  <li>Model a proper mesh for the car to enhance immersion.</li>
+  <li>Learn how to properly use the Meta Interaction SDK.</li>
+  <li>Streamline the development process: we did not take the time to set up playtesting directly in the editor, so we had to build the project every time we wanted to test a change. This ended up costing us a significant amount of time. At some point, when testing physics, we exposed public variables that could be changed to test driving behavior, but it was not a great solution.</li>
+  <li>Make a proper speedstick that functions the way you would expect.</li>
+  <li>Use physics-based interaction instead of modifying transforms directly.</li>
+  <li>Iterate on our implementation based on user feedback. &lt;- <em>probably the most important</em></li>
+</ul>
+
+<h2 id="final-words">Final Words</h2>
+<p>You can find the project on GitHub <a href="https://github.com/Jeremy-afk/VRParkour"><strong>here</strong></a>, and below is a video of our implementation in action (it has been sped up because the file was too large to upload to GitHub otherwise).</p>
+
+<video width="500" height="240" controls="">
+  <source src="Images\Lab5\Video Demo.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            
+              <p>this project by <a href="https://github.com/Jeremy-afk">Jeremy-afk</a> can be found on <a href="https://github.com/Jeremy-afk/Jeremy-afk.github.io">GitHub</a></p>
+            
+            
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+  </body>
+</html>
