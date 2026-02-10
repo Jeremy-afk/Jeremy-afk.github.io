@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=e773a9716dcbadba9bd3165830345511818afda4" media="screen">
+    <link rel="stylesheet" href="/assets/css/style.css?v=6752c2aea8fbcee27d4b76269543af56196fd4fe" media="screen">
     <link rel="stylesheet" href="/assets/css/mobile.css" media="handheld, only screen and (max-device-width:640px)">
     <link rel="stylesheet" href="/assets/css/non-screen.css" media="handheld, only screen and (max-device-width:640px)">
 
@@ -77,14 +77,19 @@
 
       <section id="main_content">
         <h1 id="lab-5--vr-locomotion-technique-implementation">Lab 5 : VR Locomotion technique Implementation</h1>
+
 <h2 id="interaction-concept">Interaction concept</h2>
+
 <p>For a refresher on the interaction concept, you can check it out <a href="./lecture2.html"><strong>here</strong></a>.</p>
+
 <h2 id="technical-implementation">Technical Implementation</h2>
+
 <p><img src="Images\Lab5\Hierarchy.png" alt="Alt text" title="Car Hierarchy" /></p>
 
 <p><em>Car Hierarchy</em></p>
 
 <p>Here is an explation of each child GameObject and its corresponding components:</p>
+
 <ul>
   <li>Car: is made of three components:
     <ul>
@@ -105,7 +110,7 @@
   <li>Speedstick pivot/Speedstick (which ended up being useless): the idea was for the lever to rotate around its base. However, when interacting with the object, you grab it by the middle, which causes it to rotate around its center. That is why the lever is placed higher than expected, so you do not have to reach down to grab the center instead of the tip. It functions very similarly to the steering wheel, but converts the rotation around the local X axis (between −45° and +45°) into forward/backward movement of the parent car.</li>
 </ul>
 
-<p><img src="Images\Lab5\lever_and_wheel.png" alt="Alt text" title="lever and wheel" />.</p>
+<p><img src="Images\Lab5\Lever_and_wheel.png" alt="Alt text" title="lever and wheel" /></p>
 
 <p>As you can see the lever is on the same level as the wheel.</p>
 
@@ -114,6 +119,7 @@
 </ul>
 
 <h2 id="improvement-ideas">Improvement ideas</h2>
+
 <ul>
   <li>Model a proper mesh for the car to enhance immersion.</li>
   <li>Learn how to properly use the Meta Interaction SDK.</li>
@@ -124,6 +130,7 @@
 </ul>
 
 <h2 id="final-words">Final Words</h2>
+
 <p>You can find the project on GitHub <a href="https://github.com/Jeremy-afk/VRParkour"><strong>here</strong></a>, and below is a video of our implementation in action (it has been sped up because the file was too large to upload to GitHub otherwise).</p>
 
 <video width="500" height="240" controls="">

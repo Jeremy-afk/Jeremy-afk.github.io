@@ -24,7 +24,7 @@ Here is an explation of each child GameObject and its corresponding components:
   - It has a Rigidbody and a box collider to work with the `XRBaseInteractable` component. The Rigidbody was set to kinematic because physics did not need to be applied to the object.
 - Speedstick pivot/Speedstick (which ended up being useless): the idea was for the lever to rotate around its base. However, when interacting with the object, you grab it by the middle, which causes it to rotate around its center. That is why the lever is placed higher than expected, so you do not have to reach down to grab the center instead of the tip. It functions very similarly to the steering wheel, but converts the rotation around the local X axis (between −45° and +45°) into forward/backward movement of the parent car.
 
-![Alt text](Images\Lab5\Lever_and_wheel.png "lever and wheel").
+![Alt text](Images\Lab5\Lever_and_wheel.png "lever and wheel")
 
 As you can see the lever is on the same level as the wheel.
 
