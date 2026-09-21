@@ -4,45 +4,14 @@
 @import "minimal-mistakes/skins/contrast";
 @import "minimal-mistakes";
 
-/* Theme selector */
-
-.theme-selector {
+#theme-toggle {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 999999;
-  pointer-events: auto;
-}
+  z-index: 99999;
 
-.theme-selector * {
-  pointer-events: auto;
-}
-
-.theme-selector label {
-  color: $text-color;
-}
-
-.theme-selector select {
-  background-color: $background-color;
-  color: $text-color;
-
-  border: 1px solid $border-color;
-  border-radius: 4px;
-
-  padding: 0.35rem 0.6rem;
-
-  font-family: inherit;
-  font-size: inherit;
-
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #777;
+  border-radius: 0.4rem;
   cursor: pointer;
 }
-
-.theme-selector select:hover {
-  border-color: $primary-color;
-}
-
-.theme-selector select:focus {
-  outline: 2px solid $primary-color;
-  outline-offset: 2px;
-}
-
