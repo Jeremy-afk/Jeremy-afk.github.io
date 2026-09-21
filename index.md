@@ -1,4 +1,7 @@
-# Welcome
+---
+layout: splash
+excerpt: "what is an excerpt ?"
+---
 
 This is my personal website.
 
