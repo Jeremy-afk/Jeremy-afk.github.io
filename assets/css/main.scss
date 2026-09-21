@@ -10,13 +10,12 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 1000;
+  z-index: 999999;
+  pointer-events: auto;
+}
 
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-
-  font-size: 0.8rem;
+.theme-selector * {
+  pointer-events: auto;
 }
 
 .theme-selector label {
@@ -46,3 +45,4 @@
   outline: 2px solid $primary-color;
   outline-offset: 2px;
 }
+
