@@ -5,13 +5,21 @@
 @import "minimal-mistakes";
 
 #theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 99999;
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
 
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #777;
-  border-radius: 0.4rem;
-  cursor: pointer;
+  z-index: 2147483647 !important;
+
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  pointer-events: auto !important;
+
+  cursor: pointer !important;
+
+  padding: 8px 12px;
+  border: 1px solid #888;
+  border-radius: 6px;
 }
