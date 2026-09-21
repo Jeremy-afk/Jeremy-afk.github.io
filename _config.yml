@@ -1,0 +1,18 @@
+remote_theme: "mmistakes/minimal-mistakes@4.28.1"
+
+plugins:
+  - jekyll-include-cache
+
+minimal_mistakes_skin: "default"
+
+locale: "en-US"
+
+title: "title"
+name: "name"
+description: "My personal website"
+url: "https://Jeremy-afk.github.io"
+
+markdown: kramdown
+
+author:
+  name: "Name"
